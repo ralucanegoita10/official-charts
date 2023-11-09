@@ -44,12 +44,26 @@ function Login(){
                 </div>
                 <div className='py-24 px-10'>
                     <h2 className='text-2xl font-semibold mb-2 text-center'>Login</h2>
-                    <form onSubmit={(e) => submitForm(e)}>
+                    <button className={"btn mt-2 w-full btn-primary" + (loading ? " loading" : "")}>
+                        <span className="font-semibold">Continue with Google</span>
+                    </button>
+                        <br />
+                    <button className={"btn mt-2 w-full btn-primary" + (loading ? " loading" : "")}>
+                            <span className="font-semibold">Continue with Facebook</span>
+                    </button>
+                        <br />
+                    <button className={"btn mt-2 w-full btn-primary" + (loading ? " loading" : "")}>
+                        <span className="font-semibold">Continue with Apple</span>
+                    </button>
 
+                    <div className="or-text my-4 text-center font-semibold text-base text-neutral-700">
+                        Or
+                    </div>
+
+                    <form onSubmit={(e) => submitForm(e)}>
                         <div className="mb-4">
 
                             <InputText type="emailId" defaultValue={loginObj.emailId} updateType="emailId" containerStyle="mt-4" labelTitle="Email Id" updateFormValue={updateFormValue}/>
-
                             <InputText defaultValue={loginObj.password} type="password" updateType="password" containerStyle="mt-4" labelTitle="Password" updateFormValue={updateFormValue}/>
 
                         </div>

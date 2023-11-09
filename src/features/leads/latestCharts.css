@@ -1,0 +1,18 @@
+.loading-bar-container {
+  width: 100%;
+  height: 20px; /* Adjust the height of the loading bar container */
+  background-color: #f3f3f3; /* Light gray background color */
+  border: 1px solid #ccc; /* Border for the loading bar container */
+  margin-bottom: 10px; /* Optional margin between loading bars */
+}
+
+.loading-bar {
+    height: 100%;
+    background-color: #0f27e9; /*#ef6ad4; /* Purple color for the loading bar */
+    border-radius: 5px; /* Rounded corners */
+  }
+  
+  .sparkline-container {
+    width: 100px; /* Adjust the width of the Sparkline */
+    height: 60px; /* Adjust the height of the Sparkline */
+  }

@@ -1,27 +1,34 @@
-import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { setPageTitle } from '../../features/common/headerSlice'
-import {Link} from 'react-router-dom'
-import TemplatePointers from '../../features/user/components/TemplatePointers'
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { setPageTitle } from '../../features/common/headerSlice';
+import { Link } from 'react-router-dom';
+import LatestNews from '../../features/user/components/LatestNews';
+import LatestChartsForWeek from '../../features/user/components/LatestChartsForWeek';
+import LatestChartsInsights from '../../features/user/components/LatestChartsInsights';
+import './Welcome.css';
 
-function InternalPage(){
+function InternalPage() {
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(setPageTitle({ title: '' }));
+  }, [dispatch]);
 
-    useEffect(() => {
-        dispatch(setPageTitle({ title : ""}))
-      }, [])
-
-    return(
-      <div className="hero h-4/5 bg-base-200">
+  return (
+    <div className="hero">
       <div className="hero-content">
-        <div className="max-w-md">
-            <TemplatePointers />
-            <Link to="/app/dashboard"><button className="btn bg-base-100 btn-outline">Get Started</button></Link>
+        <div className="w-1/3">
+          <LatestChartsForWeek />
+        </div>
+        <div className="w-1/3">
+          <LatestChartsInsights />
+        </div>
+        <div className="w-1/3">
+          <LatestNews />
         </div>
       </div>
     </div>
-    )
+  );
 }
 
-export default InternalPage
+export default InternalPage;

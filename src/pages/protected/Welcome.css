@@ -1,0 +1,20 @@
+.hero {
+    height: 50vh; /* Set the height to 50% of the viewport height */
+    background-color: #f0f4f8; /* Set the background color */
+  }
+  
+  .hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1200px; /* Set the maximum width for the content */
+    margin: 0 auto; /* Center the content horizontally */
+    padding: 20px; /* Add padding to the content */
+  }
+  
+  .max-w-md {
+    max-width: 20rem; /* Set the maximum width for the button */
+    margin-top: 2rem; /* Add margin to the button */
+  }
+  
