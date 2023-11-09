@@ -26,10 +26,10 @@ const LatestNews = () => {
 
   return (
     <div className="bg-gray-200 p-6 rounded-lg shadow-lg">
-      <h2 className="text-3xl text-custom-blue font-bold mb-4">Latest News</h2>
+      <h2 className="text-3xl font-bold mb-4">Latest News</h2>
       {newsData.map((news, index) => (
         <div key={index} className="bg-white rounded p-4 mb-4 shadow-md">
-          <p className="text-custom-pink font-semibold mb-2">{news.date}</p>
+          <p className="text-purple-700 font-semibold mb-2">{news.date}</p>
           <p className="text-gray-800">{news.content}</p>
         </div>
       ))}

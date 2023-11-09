@@ -9,15 +9,19 @@ function LeftSidebar(){
     const location = useLocation();
     const [active, setActive] = useState(false);
     const dispatch = useDispatch()
+
+
     const close = (e) => {
         document.getElementById('left-sidebar-drawer').click()
     }
+
     const handleMouseOver = () => {
         setActive(true);
-    };
-    const handleMouseOut = () => {
+      };
+    
+      const handleMouseOut = () => {
         setActive(false);
-    };
+      };
 
     return(
         <div className="drawer-side ">
@@ -28,7 +32,8 @@ function LeftSidebar(){
             </button>
 
                 <li className="mb-2 font-semibold text-xl" onMouseOver={handleMouseOver} onMouseOut ={handleMouseOut}>
-                    <Link to={'/app/welcome'}><img className="" src={active? "/logo3pink.png":"/logo2.png"} alt="Official Charts Logo"/></Link> </li>
+                    
+                    <Link to={'/app/welcome'}><img className="" src={active? "/logo3pink":"/logo2.png"} alt="Official Charts Logo"/></Link> </li>
                 {
                     routes.map((route, k) => {
                         return(

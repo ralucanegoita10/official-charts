@@ -8,7 +8,7 @@ import React, { useState } from "react";
 function LeftSidebar(){
     const location = useLocation();
     const [active, setActive] = useState(false);
-    const dispatch = useDispatch()
+    //const dispatch = useDispatch()
     const close = (e) => {
         document.getElementById('left-sidebar-drawer').click()
     }

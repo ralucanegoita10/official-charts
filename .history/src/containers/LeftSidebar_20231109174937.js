@@ -3,18 +3,22 @@ import { NavLink,  Routes, Link , useLocation} from 'react-router-dom'
 import SidebarSubmenu from './SidebarSubmenu';
 import XMarkIcon  from '@heroicons/react/24/outline/XMarkIcon'
 import { useDispatch } from 'react-redux';
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 function LeftSidebar(){
     const location = useLocation();
     const [active, setActive] = useState(false);
     const dispatch = useDispatch()
+
+
     const close = (e) => {
         document.getElementById('left-sidebar-drawer').click()
     }
+
     const handleMouseOver = () => {
         setActive(true);
     };
+    
     const handleMouseOut = () => {
         setActive(false);
     };
@@ -28,7 +32,7 @@ function LeftSidebar(){
             </button>
 
                 <li className="mb-2 font-semibold text-xl" onMouseOver={handleMouseOver} onMouseOut ={handleMouseOut}>
-                    <Link to={'/app/welcome'}><img className="" src={active? "/logo3pink.png":"/logo2.png"} alt="Official Charts Logo"/></Link> </li>
+                    <Link to={'/app/welcome'}><img className={active ? "background-color-custom-pink" : "background-color-custom-blue" } src="/logo2.svg" alt="Official Charts Logo"/></Link> </li>
                 {
                     routes.map((route, k) => {
                         return(

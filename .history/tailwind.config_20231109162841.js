@@ -8,7 +8,6 @@ module.exports = {
   theme: {
     colors: {
       'custom-pink':'#ef6ad4',
-      'custom-blue':'#0f27e9',
     },
     extend: {},
   },
