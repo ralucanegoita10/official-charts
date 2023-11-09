@@ -28,7 +28,7 @@ const LatestChartsInsights = () => {
       <h2 className="text-3xl font-bold mb-4">Latest Charts Insights</h2>
       {insightsData.map((item, index) => (
         <div key={index} className="bg-white rounded p-4 mb-4 shadow-md">
-          <p className="text-purple-700 font-semibold mb-2">{item.category}</p>
+          <p className="custom-pink font-semibold mb-2">{item.category}</p>
           <p className="text-gray-800">{item.insight}</p>
         </div>
       ))}

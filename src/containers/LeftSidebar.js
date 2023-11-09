@@ -24,7 +24,7 @@ function LeftSidebar(){
 
                 <li className="mb-2 font-semibold text-xl">
                     
-                    <Link to={'/app/welcome'}><img className="" src="/logo2.png" alt="DashWind Logo"/></Link> </li>
+                    <Link to={'/app/welcome'}><img className="" src="/logo2.png" alt="Official Charts Logo"/></Link> </li>
                 {
                     routes.map((route, k) => {
                         return(

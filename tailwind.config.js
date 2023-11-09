@@ -6,6 +6,9 @@ module.exports = {
   ],
   darkMode: ["class", '[data-theme="dark"]'],
   theme: {
+    colors: {
+      'custom-pink':'#ef6ad4',
+    },
     extend: {},
   },
   plugins: [require("@tailwindcss/typography"), require("daisyui")],
