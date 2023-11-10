@@ -4,7 +4,7 @@ const ChartData = [
     {
       pos: 1,
       lw: "NEW",
-      albumPhoto: 'defaultURL',
+      albumPhoto: await albumArt( 'Rush' ),
       title: "Shape of You - Ed Sheeran",
       dus: "18,923",
       physical: "3,445",
@@ -304,7 +304,8 @@ const ChartData = [
   ];
   const getPics = async (title) => {
     for (let i=0; i<ChartData.length ; i++) {
-        try {await albumArt(ChartData[i].title.split('-')[1]).then((url)=>{
+        console.log(ChartData[i].title)
+        try {await albumArt(ChartData[i].title).then((url)=>{
           ChartData[i].albumPhoto = url
         })}
         catch (error) {

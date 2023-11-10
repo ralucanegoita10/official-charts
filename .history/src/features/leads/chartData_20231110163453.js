@@ -4,7 +4,7 @@ const ChartData = [
     {
       pos: 1,
       lw: "NEW",
-      albumPhoto: 'defaultURL',
+      albumPhoto: await albumArt( 'Rush' ),
       title: "Shape of You - Ed Sheeran",
       dus: "18,923",
       physical: "3,445",

@@ -92,8 +92,8 @@ function Leads() {
                   <td>
                     <div className="flex items-center space-x-3">
                       <div className="avatar">
-                        <div className="mask mask-squircle w-12 h-12 zoom">
-                          <img src={data.albumPhoto} alt="Album Art" />
+                        <div className="mask mask-squircle w-12 h-12">
+                          <img src={data.albumPhoto} alt="Album Art" style={{'hover':'transform:scale(2)'}} />
                         </div>
                       </div>
                     </div>
