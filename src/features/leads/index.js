@@ -4,6 +4,8 @@ import TitleCard from "../../components/Cards/TitleCard";
 import { getLeadsContent } from "./leadSlice";
 import ChartData from "./chartData";
 import { Sparklines, SparklinesLine } from "react-sparklines";
+import { Link } from 'react-router-dom'
+
 
 import "./latestCharts.css"; // Import the CSS file for styling
 
@@ -50,8 +52,8 @@ function Leads() {
   const generateLoadingBarStyle = (value) => {
     const parsedValue = parseFloat(value.replace(/,/g, ""));
     const percentage = (parsedValue / 50000) * 100; // Assuming maximum value is 50,000
-    const barColor = percentage <= 50 ? '#0f27e9' : '#ef6ad4'; // Blue if filled less than half, pink if filled more than half
-  
+    const barColor = percentage <= 50 ? "#0f27e9" : "#ef6ad4"; // Blue if filled less than half, pink if filled more than half
+
     return {
       width: `${percentage}%`,
       backgroundColor: barColor,
@@ -60,10 +62,7 @@ function Leads() {
 
   return (
     <>
-      <TitleCard
-        title="Latest Charts"
-        topMargin="mt-2"
-      >
+      <TitleCard title="Latest Charts" topMargin="mt-2">
         <div className="overflow-x-auto w-full">
           <table className="table w-full">
             <thead>
@@ -102,7 +101,9 @@ function Leads() {
                   <td>
                     <div className="flex items-center space-x-3">
                       <div>
-                        <div className="font-bold">{data.title}</div>
+                        <Link to="/app/transactions">
+                          <div className="font-bold">{data.title}</div>
+                        </Link>
                       </div>
                     </div>
                   </td>

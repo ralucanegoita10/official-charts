@@ -21,6 +21,14 @@ const LatestNews = () => {
     {
       date: '12/10/2021',
       content: 'Rarewaves HDel Added To Chart Panel - Week 2139'
+    },
+    {
+      date: '13/11/2021',
+      content: 'Rarewaves HDel Added To Chart Panel - Week 96'
+    },
+    {
+      date: '19/10/2022',
+      content: 'Antarctica HDel Added To Charts - Week 92'
     }
   ];
 
