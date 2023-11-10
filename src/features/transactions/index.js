@@ -19,6 +19,23 @@ function Transactions() {
     };
   };
 
+  const styles = {
+    key: {
+      color: "#ef6ad4",
+      fontWeight: "bold",
+      backgroundColor: "black"
+
+    },
+    value: {
+      color: "white",
+      backgroundColor: "black",
+
+    },
+    table: {
+        width: "400px",
+    }
+  };
+
   return (
     <>
       <TitleCard title="Sales" topMargin="mt-2">
@@ -132,19 +149,20 @@ function Transactions() {
       </TitleCard>
 
       <TitleCard title="Product Details" topMargin="mt-2">
-        <div className="overflow-x-auto w-full">
-          <table className="table w-full">
+        <div style={styles.table} className="overflow-x-auto w-full">
+          <table className="table w-full" >
             <tbody>
               {Object.entries(ProductData[0]).map(([key, value], index) => (
                 <tr key={index}>
-                  <td>{key}</td>
-                  <td>{value}</td>
+                  <td style={styles.key}>{key}</td>
+                  <td style={styles.value}>{value}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
       </TitleCard>
+
       <TitleCard title="Sales History Details" topMargin="mt-2">
         <div className="overflow-x-auto w-full">
           <table className="table w-full">
