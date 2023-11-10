@@ -17,26 +17,11 @@ module.exports = {
   daisyui: {
     themes: [
       {light:{
-        ...require("daisyui/src/colors/themes")["[data-theme=light]"],
+        ...require("daisyui/src/theming/themes")["[data-theme=light]"],
         "primary": "#0f27e9",
-        //"primary:hover":'#ef6ad4',
-        '.btn-primary': {
-          'border-color':'#ef6ad4'
-        },
-        '.btn-primary:hover': {
-          'background-color':'#ef6ad4'
-        }
-    }}, {dark:{
-    ...require("daisyui/src/colors/themes")["[data-theme=dark]"],
+   }}, {dark:{
       'primary':'#0f27e9',
-      //"primary:hover":'#ef6ad4',
-      '.btn-primary': {
-        'border-color':'#ef6ad4'
-      },
-      '.btn-primary:hover': {
-        'background-color':'#ef6ad4'
-      }
-    }},
+   }},
   ],
   },
 

@@ -19,7 +19,7 @@ module.exports = {
       {light:{
         ...require("daisyui/src/colors/themes")["[data-theme=light]"],
         "primary": "#0f27e9",
-        //"primary:hover":'#ef6ad4',
+        "primary:hover":'#ef6ad4',
         '.btn-primary': {
           'border-color':'#ef6ad4'
         },
@@ -29,7 +29,7 @@ module.exports = {
     }}, {dark:{
     ...require("daisyui/src/colors/themes")["[data-theme=dark]"],
       'primary':'#0f27e9',
-      //"primary:hover":'#ef6ad4',
+      "primary:hover":'#ef6ad4',
       '.btn-primary': {
         'border-color':'#ef6ad4'
       },

@@ -68,7 +68,7 @@ function Login(){
 
                         </div>
 
-                        <div className='text-right text-custom-blue text-primary'><Link to="/forgot-password"><span className="text-sm  inline-block  hover:text-custom-pink hover:underline hover:cursor-pointer transition duration-200">Forgot Password?</span></Link>
+                        <div className='text-right text-primary'><Link to="/forgot-password"><span className="text-sm  inline-block  hover:text-primary hover:underline hover:cursor-pointer transition duration-200">Forgot Password?</span></Link>
                         </div>
 
                         <ErrorText styleClass="mt-8">{errorMessage}</ErrorText>

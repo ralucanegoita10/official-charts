@@ -44,7 +44,7 @@ function Login(){
                 </div>
                 <div className='py-24 px-10'>
                     <h2 className='text-2xl font-semibold mb-2 text-center'>Login</h2>
-                    <button className={"btn mt-2 w-full btn-primary" + (loading ? " loading" : "")}>
+                    <button className={"btn mt-2 w-full btn-primary background-color-custom-pink border-color-custom-blue" + (loading ? " loading" : "")}>
                         <span className="font-semibold">Continue with Google</span>
                     </button>
                         <br />
@@ -68,7 +68,7 @@ function Login(){
 
                         </div>
 
-                        <div className='text-right text-custom-blue text-primary'><Link to="/forgot-password"><span className="text-sm  inline-block  hover:text-custom-pink hover:underline hover:cursor-pointer transition duration-200">Forgot Password?</span></Link>
+                        <div className='text-right text-primary'><Link to="/forgot-password"><span className="text-sm  inline-block  hover:text-custom-pink hover:underline hover:cursor-pointer transition duration-200">Forgot Password?</span></Link>
                         </div>
 
                         <ErrorText styleClass="mt-8">{errorMessage}</ErrorText>

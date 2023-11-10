@@ -31,7 +31,7 @@
     animation: spin 2s linear infinite;
 }
 
-.override-color{
+.btn-primary{
   background-color: custom-blue !important;
   border-color: custom-pink !important;
 }

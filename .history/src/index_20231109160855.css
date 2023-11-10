@@ -30,8 +30,3 @@
     height: 120px;
     animation: spin 2s linear infinite;
 }
-
-.override-color{
-  background-color: custom-blue !important;
-  border-color: custom-pink !important;
-}

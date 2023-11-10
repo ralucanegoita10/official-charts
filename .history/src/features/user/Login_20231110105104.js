@@ -44,7 +44,7 @@ function Login(){
                 </div>
                 <div className='py-24 px-10'>
                     <h2 className='text-2xl font-semibold mb-2 text-center'>Login</h2>
-                    <button className={"btn mt-2 w-full btn-primary" + (loading ? " loading" : "")}>
+                    <button className={"btn mt-2 w-full btn-primary override-color" + (loading ? " loading" : "")}>
                         <span className="font-semibold">Continue with Google</span>
                     </button>
                         <br />
