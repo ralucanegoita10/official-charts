@@ -48,7 +48,7 @@ function LineChart(){
     {
       fill: false,
       label: 'Never Gonna Give You Up - Rick Astley',
-      data: labels.map(() => { return Math.floor((Math.random() * 100 ) + 1)}),
+      data: labels.map(() => { return Math.ceil(Math.random() * 100 )}),
       borderColor: 'rgb(53, 162, 235)',
       backgroundColor: 'rgba(53, 162, 235, 0.5)',
     },

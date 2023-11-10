@@ -26,7 +26,7 @@ function DoughnutChart(){
         },
       };
       
-      const labels = ['Downloads', 'Audio Stream', 'Premium Audio Stream', 'Video Stream', 'Premium Video Stream', 'Physical'];
+      const labels = ['Electronics', 'Home Applicances', 'Beauty', 'Furniture', 'Watches', 'Apparel'];
       
       const data = {
         labels,
@@ -56,7 +56,7 @@ function DoughnutChart(){
       };
 
     return(
-        <TitleCard title={"Sales by Category"}>
+        <TitleCard title={"Orders by Category"}>
                 <Doughnut options={options} data={data} />
         </TitleCard>
     )
