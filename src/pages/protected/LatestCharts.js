@@ -1,19 +1,23 @@
-import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { setPageTitle } from '../../features/common/headerSlice'
-import LatestCharts from '../../features/leads'
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setPageTitle } from "../../features/common/headerSlice";
+import LatestCharts from "../../features/leads";
+import LatestNews from "../../features/user/components/LatestNews";
+import './LatestCharts.css';
 
-function InternalPage(){
-    const dispatch = useDispatch()
+function InternalPage() {
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(setPageTitle({ title : "Latest Charts"}))
-      }, [])
+  useEffect(() => {
+    dispatch(setPageTitle({ title: "Latest Charts" }));
+  }, []);
 
-
-    return(
-        <LatestCharts />
-    )
+  return (
+    <div className="container">
+      <LatestCharts />
+      <LatestNews className="LatestNews" />
+    </div>
+  );
 }
 
-export default InternalPage
+export default InternalPage;

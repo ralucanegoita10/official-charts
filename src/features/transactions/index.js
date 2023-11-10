@@ -1,128 +1,276 @@
-import moment from "moment"
-import { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { showNotification } from "../common/headerSlice"
-import TitleCard from "../../components/Cards/TitleCard"
-import { RECENT_TRANSACTIONS } from "../../utils/dummyData"
-import FunnelIcon from '@heroicons/react/24/outline/FunnelIcon'
-import XMarkIcon from '@heroicons/react/24/outline/XMarkIcon'
-import SearchBar from "../../components/Input/SearchBar"
+import moment from "moment";
+import React from "react";
 
-const TopSideButtons = ({removeFilter, applyFilter, applySearch}) => {
+import TitleCard from "../../components/Cards/TitleCard";
+import SalesData from "./salesTabledata";
+import ProductData from "./productDetails";
+import SalesHistoryTabledata from "./salesHistory";
+import "./productDetails.css";
 
-    const [filterParam, setFilterParam] = useState("")
-    const [searchText, setSearchText] = useState("")
-    const locationFilters = ["Paris", "London", "Canada", "Peru", "Tokyo"]
+function Transactions() {
+  const generateLoadingBarStyle = (value) => {
+    const parsedValue = parseFloat(value.replace(/,/g, ""));
+    const percentage = (parsedValue / 5000000) * 100; // Assuming maximum value is 50,000
+    const barColor = percentage <= 60 ? "#0f27e9" : "#ef6ad4"; // Blue if filled less than half, pink if filled more than half
 
-    const showFiltersAndApply = (params) => {
-        applyFilter(params)
-        setFilterParam(params)
+    return {
+      width: `${percentage}%`,
+      backgroundColor: barColor,
+    };
+  };
+
+  const styles = {
+    key: {
+      color: "#ef6ad4",
+      fontWeight: "bold",
+      backgroundColor: "black"
+
+    },
+    value: {
+      color: "white",
+      backgroundColor: "black",
+
+    },
+    table: {
+        width: "400px",
     }
+  };
 
-    const removeAppliedFilter = () => {
-        removeFilter()
-        setFilterParam("")
-        setSearchText("")
-    }
+  return (
+    <>
+      <TitleCard title="Sales" topMargin="mt-2">
+        <div className="overflow-x-auto w-full">
+          <table className="table w-full">
+            <thead>
+              <tr>
+                <th> </th>
+                <th>Chart Eligible</th>
+                <th>Physical</th>
+                <th>Download</th>
+                <th>Aud Strm Prem</th>
+                <th>Aud Strm Prem Calc</th>
+                <th>Aud Strm AdF </th>
+                <th>Aud Strm AdF Calc</th>
+                <th>Vid Strm Prem</th>
+                <th>Vid Strm Prem Calc</th>
+                <th>Vid Strm AdF</th>
+                <th>Vid Strm AdF Calc</th>
+              </tr>
+            </thead>
+            <tbody>
+              {SalesData.map((data, index) => {
+                return (
+                  <tr key={index}>
+                    <td>{data.Type}</td>
 
-    useEffect(() => {
-        if(searchText == ""){
-            removeAppliedFilter()
-        }else{
-            applySearch(searchText)
-        }
-    }, [searchText])
-
-    return(
-        <div className="inline-block float-right">
-            <SearchBar searchText={searchText} styleClass="mr-4" setSearchText={setSearchText}/>
-            {filterParam != "" && <button onClick={() => removeAppliedFilter()} className="btn btn-xs mr-2 btn-active btn-ghost normal-case">{filterParam}<XMarkIcon className="w-4 ml-2"/></button>}
-            <div className="dropdown dropdown-bottom dropdown-end">
-                <label tabIndex={0} className="btn btn-sm btn-outline"><FunnelIcon className="w-5 mr-2"/>Filter</label>
-                <ul tabIndex={0} className="dropdown-content menu p-2 text-sm shadow bg-base-100 rounded-box w-52">
-                    {
-                        locationFilters.map((l, k) => {
-                            return  <li key={k}><a onClick={() => showFiltersAndApply(l)}>{l}</a></li>
-                        })
-                    }
-                    <div className="divider mt-0 mb-0"></div>
-                    <li><a onClick={() => removeAppliedFilter()}>Remove Filter</a></li>
-                </ul>
-            </div>
+                    <td>{data.chartEligible}</td>
+                    <td>{data.Physical}</td>
+                    <td>
+                      <div className="loading-bar-container">
+                        <div
+                          className="loading-bar"
+                          style={generateLoadingBarStyle(data.Download)}
+                        ></div>
+                      </div>
+                      <div className="loading-bar-label">{data.Download}</div>
+                    </td>
+                    <td>
+                      <div className="loading-bar-container">
+                        <div
+                          className="loading-bar"
+                          style={generateLoadingBarStyle(data.AudStrmPrem)}
+                        ></div>
+                      </div>
+                      <div className="loading-bar-label">
+                        {data.AudStrmPrem}
+                      </div>
+                    </td>
+                    <td>
+                      <div className="loading-bar-container">
+                        <div
+                          className="loading-bar"
+                          style={generateLoadingBarStyle(data.AudStrmPremCalc)}
+                        ></div>
+                      </div>
+                      <div className="loading-bar-label">
+                        {data.AudStrmPremCalc}
+                      </div>
+                    </td>
+                    <td>
+                      <div className="loading-bar-container">
+                        <div
+                          className="loading-bar"
+                          style={generateLoadingBarStyle(data.AudStrmAdF)}
+                        ></div>
+                      </div>
+                      <div className="loading-bar-label">{data.AudStrmAdF}</div>
+                    </td>
+                    <td>
+                      <div className="loading-bar-container">
+                        <div
+                          className="loading-bar"
+                          style={generateLoadingBarStyle(data.AudStrmAdFCalc)}
+                        ></div>
+                      </div>
+                      <div className="loading-bar-label">
+                        {data.AudStrmAdFCalc}
+                      </div>
+                    </td>
+                    <td>
+                      <div className="loading-bar-container">
+                        <div
+                          className="loading-bar"
+                          style={generateLoadingBarStyle(data.VidStrmPrem)}
+                        ></div>
+                      </div>
+                      <div className="loading-bar-label">
+                        {data.VidStrmPrem}
+                      </div>
+                    </td>
+                    <td>
+                      <div className="loading-bar-container">
+                        <div
+                          className="loading-bar"
+                          style={generateLoadingBarStyle(data.VidStrmPremCalc)}
+                        ></div>
+                      </div>
+                      <div className="loading-bar-label">
+                        {data.VidStrmPremCalc}
+                      </div>
+                    </td>
+                    <td>{data.VidStrmAdF}</td>
+                    <td>{data.VidStrmAdFCalc}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
-    )
+      </TitleCard>
+
+      <TitleCard title="Product Details" topMargin="mt-2">
+        <div style={styles.table} className="overflow-x-auto w-full">
+          <table className="table w-full" >
+            <tbody>
+              {Object.entries(ProductData[0]).map(([key, value], index) => (
+                <tr key={index}>
+                  <td style={styles.key}>{key}</td>
+                  <td style={styles.value}>{value}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </TitleCard>
+
+      <TitleCard title="Sales History Details" topMargin="mt-2">
+        <div className="overflow-x-auto w-full">
+          <table className="table w-full">
+            <thead>
+              <tr>
+                <th rowSpan="2">Show Percentages</th>
+                <th colSpan="3">Market Contribution DUS</th>
+                <th colSpan="3">Product Contribution DUS</th>
+                <th rowSpan="2">Score DUS</th>
+              </tr>
+              <tr>
+                <th>2342</th>
+                <th>2341</th>
+                <th>% Var</th>
+                <th>2342</th>
+                <th>2341</th>
+                <th>% Var</th>
+              </tr>
+            </thead>
+            <tbody>
+              {SalesHistoryTabledata.map((data, index) => (
+                <React.Fragment key={index}>
+                  <tr>
+                    <td rowSpan="2">{data.ShowPercentages}</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div className="loading-bar-container">
+                        <div
+                          className="loading-bar"
+                          style={generateLoadingBarStyle(
+                            data.MarketContributionDUS.data[0]
+                          )}
+                        ></div>
+                      </div>
+                      <div className="loading-bar-label">
+                        {data.MarketContributionDUS.data[0]}
+                      </div>
+                    </td>
+                    <td>
+                      <div className="loading-bar-container">
+                        <div
+                          className="loading-bar"
+                          style={generateLoadingBarStyle(
+                            data.MarketContributionDUS.data[1]
+                          )}
+                        ></div>
+                      </div>
+                      <div className="loading-bar-label">
+                        {data.MarketContributionDUS.data[1]}
+                      </div>
+                    </td>
+                    <td>
+                      <div className="loading-bar-container">
+                        <div
+                          className="loading-bar"
+                          style={generateLoadingBarStyle(
+                            data.MarketContributionDUS.data[2]
+                          )}
+                        ></div>
+                      </div>
+                      <div className="loading-bar-label">
+                        {data.MarketContributionDUS.data[2]}
+                      </div>
+                    </td>
+
+                    {/* <td>{data.ProductContributionDUS.data[0]}</td>
+                    <td>{data.ProductContributionDUS.data[1]}</td>
+                    <td>{data.ProductContributionDUS.data[2]}</td> */}
+                    <td>
+                      <div className="loading-bar-container">
+                        <div
+                          className="loading-bar"
+                          style={generateLoadingBarStyle(
+                            data.ProductContributionDUS.data[0]
+                          )}
+                        ></div>
+                      </div>
+                      <div className="loading-bar-label">
+                        {data.ProductContributionDUS.data[0]}
+                      </div>
+                    </td>
+                    <td>
+                      <div className="loading-bar-container">
+                        <div
+                          className="loading-bar"
+                          style={generateLoadingBarStyle(
+                            data.ProductContributionDUS.data[1]
+                          )}
+                        ></div>
+                      </div>
+                      <div className="loading-bar-label">
+                        {data.ProductContributionDUS.data[1]}
+                      </div>
+                    </td>
+                    <td>{data.ProductContributionDUS.data[2]}</td>
+
+                    <td>{data.ScoreDUS}</td>
+                    <td></td>
+                  </tr>
+                </React.Fragment>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </TitleCard>
+    </>
+  );
 }
 
-
-function Transactions(){
-
-
-    const [trans, setTrans] = useState(RECENT_TRANSACTIONS)
-
-    const removeFilter = () => {
-        setTrans(RECENT_TRANSACTIONS)
-    }
-
-    const applyFilter = (params) => {
-        let filteredTransactions = RECENT_TRANSACTIONS.filter((t) => {return t.location == params})
-        setTrans(filteredTransactions)
-    }
-
-    // Search according to name
-    const applySearch = (value) => {
-        let filteredTransactions = RECENT_TRANSACTIONS.filter((t) => {return t.email.toLowerCase().includes(value.toLowerCase()) ||  t.email.toLowerCase().includes(value.toLowerCase())})
-        setTrans(filteredTransactions)
-    }
-
-    return(
-        <>
-            
-            <TitleCard title="Recent Transactions" topMargin="mt-2" TopSideButtons={<TopSideButtons applySearch={applySearch} applyFilter={applyFilter} removeFilter={removeFilter}/>}>
-
-                {/* Team Member list in table format loaded constant */}
-            <div className="overflow-x-auto w-full">
-                <table className="table w-full">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email Id</th>
-                        <th>Location</th>
-                        <th>Amount</th>
-                        <th>Transaction Date</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            trans.map((l, k) => {
-                                return(
-                                    <tr key={k}>
-                                    <td>
-                                        <div className="flex items-center space-x-3">
-                                            <div className="avatar">
-                                                <div className="mask mask-circle w-12 h-12">
-                                                    <img src={l.avatar} alt="Avatar" />
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div className="font-bold">{l.name}</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>{l.email}</td>
-                                    <td>{l.location}</td>
-                                    <td>${l.amount}</td>
-                                    <td>{moment(l.date).format("D MMM")}</td>
-                                    </tr>
-                                )
-                            })
-                        }
-                    </tbody>
-                </table>
-            </div>
-            </TitleCard>
-        </>
-    )
-}
-
-
-export default Transactions
+export default Transactions;
