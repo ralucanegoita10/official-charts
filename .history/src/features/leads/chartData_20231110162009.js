@@ -304,7 +304,8 @@ const ChartData = [
   ];
   const getPics = async (title) => {
     for (let i=0; i<ChartData.length ; i++) {
-        try {await albumArt(ChartData[i].title.split('-')[1]).then((url)=>{
+        console.log(ChartData[i].title)
+        try {await albumArt(ChartData[i].title).then((url)=>{
           ChartData[i].albumPhoto = url
         })}
         catch (error) {

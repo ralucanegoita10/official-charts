@@ -1,4 +1,12 @@
 const albumArt = require( 'album-art' )
+const getPic = async () => {
+  await  albumArt( 'Rush' ).then( (data)=>{
+  return data
+  })
+}
+const defaultPic = await getPic()
+//albumArt( 'Rush' ).then( console.log )
+
 
 const ChartData = [
     {
@@ -304,16 +312,16 @@ const ChartData = [
   ];
   const getPics = async (title) => {
     for (let i=0; i<ChartData.length ; i++) {
-        try {await albumArt(ChartData[i].title.split('-')[1]).then((url)=>{
+        console.log(ChartData[i].title)
+        await albumArt(ChartData[i].title).then((url)=>{
+          console.log(url)
           ChartData[i].albumPhoto = url
-        })}
-        catch (error) {
-          await albumArt('Rush').then((url)=>{
-            ChartData[i].albumPhoto = url
-          })
-        }
+        })
+        .catch(async ()=>{
+          ChartData[i].albumPhoto = defaultPic
+        })
+      }
     }
-  }
   await getPics()
 
   export default ChartData;
