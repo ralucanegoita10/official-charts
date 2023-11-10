@@ -89,7 +89,7 @@ function Header(){
                 {/* Profile icon, opening menu on click */}
                 <div className="dropdown dropdown-end ml-4">
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                        <div className="w-6 rounded-full">
+                        <div className="w-5 rounded-full">
                         <img src="/logout2.svg" alt="profile" />
                         </div>
                     </label>
