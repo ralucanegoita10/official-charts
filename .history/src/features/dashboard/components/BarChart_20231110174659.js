@@ -35,7 +35,7 @@ function BarChart(){
           },
           {
             label: 'Physical Sales',
-            data: labels.map(() => { return Math.random() * 100 + 500 }),
+            data: labels.map(() => { return '£' + Math.random() * 100 + 500 }),
             backgroundColor: 'rgba(53, 162, 235, 1)',
           },
         ],

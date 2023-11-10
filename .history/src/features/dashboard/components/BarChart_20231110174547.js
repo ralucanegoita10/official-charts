@@ -42,7 +42,7 @@ function BarChart(){
       };
 
     return(
-      <TitleCard title={"Revenue (£GBP)"}>
+      <TitleCard title={"Revenue"}>
             <Bar options={options} data={data} />
       </TitleCard>
 

@@ -26,7 +26,7 @@ function DoughnutChart(){
         },
       };
       
-      const labels = ['Downloads', 'Audio Stream', 'Premium Audio Stream', 'Video Stream', 'Premium Video Stream', 'Physical'];
+      const labels = ['Downloads', 'Audio Stream', 'Physical', 'Video Stream', 'Premium Audio Stream', 'Premium Video Stream'];
       
       const data = {
         labels,

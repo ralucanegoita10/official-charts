@@ -26,10 +26,8 @@ ChartJS.register(
 function LineChart(){
 
   const options = {
-    scales:{ 
-      'y': {
-        reverse: true
-      }
+    scales:{
+      reverse: true,
     },
     responsive: true,
     plugins: {
@@ -46,9 +44,9 @@ function LineChart(){
   labels,
   datasets: [
     {
-      fill: false,
+      fill: true,
       label: 'Never Gonna Give You Up - Rick Astley',
-      data: labels.map(() => { return Math.floor((Math.random() * 100 ) + 1)}),
+      data: labels.map(() => { return Math.random() * 100 }),
       borderColor: 'rgb(53, 162, 235)',
       backgroundColor: 'rgba(53, 162, 235, 0.5)',
     },
