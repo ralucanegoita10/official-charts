@@ -13,19 +13,11 @@ import "./latestCharts.css"; // Import the CSS file for styling
 
 function Leads() {
   const [reference, setReference] = useState (0);
-  const [visible, setVisible] = useState(false);
   const dispatch = useDispatch();
 
-  function closeModal () {
-    console.log('clicked')
-    setVisible(!visible)
-  }
   function handleClick (ref) {
     setReference(ref)
-    setVisible(!visible)
     console.log('Index reference set = ' + reference)
-    console.log('Visibility toggled!')
-    //document.getElementById('my_modal_1').showModal()
   }
 
   useEffect(() => {
@@ -78,20 +70,7 @@ function Leads() {
 
   return (
     <>
-      {/* <dialog id="my_modal_1" className="modal">
-        <div className="modal-box">
-          <h3 className="font-bold text-lg">Hello!</h3>
-          <p className="py-4">Press ESC key or click the button below to close</p>
-          <div className="modal-action"> */}
-            {/* <ProductCard data={ChartData} index={reference}/> */}
-            {/* <form method="dialog"> */}
-              {/* if there is a button in form, it will close the modal */}
-              {/* <button className="btn">Close</button>
-            </form>
-          </div>
-        </div>
-      </dialog> */}
-      <ProductCard data={ChartData} index={reference} visible={visible} func={closeModal}/>
+      <ProductCard data={ChartData} index={index}/>
       <TitleCard title="Latest Charts" topMargin="mt-2">
         <div className="overflow-x-auto w-full">
           <table className="table w-full">
@@ -111,7 +90,7 @@ function Leads() {
             <tbody>
               {ChartData.map((data, index) => (
                 <tr key={index} onClick={() => handleClick(index)}>
-                  <td></td>
+                  <td onClick={() => setIndex(index)}>{data.pos}</td>
                   <td>
                     {data.lw === "NEW" ? (
                       <p>{"NEW"}</p>
@@ -130,7 +109,7 @@ function Leads() {
                   </td>
                   <td>
                     <div className="flex items-center space-x-3">
-                      <div >
+                      <div onClick={() => setReference(index)}>
                         {/* //<Link to="/app/transactions"> */}
                           <div className="font-bold">{data.title}</div>
                         {/* //</Link> */}

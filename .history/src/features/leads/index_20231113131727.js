@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TitleCard from "../../components/Cards/TitleCard";
 import ProductCard from "../user/components/ProductCard";
@@ -10,28 +10,17 @@ import { Link } from 'react-router-dom'
 
 import "./latestCharts.css"; // Import the CSS file for styling
 
-
+let index = 0
+function setIndex(newVal) {
+  index = newVal
+  console.log('index set = ' + index)
+}
 function Leads() {
-  const [reference, setReference] = useState (0);
-  const [visible, setVisible] = useState(false);
   const dispatch = useDispatch();
-
-  function closeModal () {
-    console.log('clicked')
-    setVisible(!visible)
-  }
-  function handleClick (ref) {
-    setReference(ref)
-    setVisible(!visible)
-    console.log('Index reference set = ' + reference)
-    console.log('Visibility toggled!')
-    //document.getElementById('my_modal_1').showModal()
-  }
 
   useEffect(() => {
     dispatch(getLeadsContent());
   }, []);
-
   function generateRandomLW() {
     let values = [...Array(30).keys()].map((i) => i + 1); // Create an array with numbers 1 to 30
     const maxNewOccurrences = Math.floor(Math.random() * 2) + 3; // Randomize 3 to 4 occurrences of "NEW"
@@ -78,20 +67,7 @@ function Leads() {
 
   return (
     <>
-      {/* <dialog id="my_modal_1" className="modal">
-        <div className="modal-box">
-          <h3 className="font-bold text-lg">Hello!</h3>
-          <p className="py-4">Press ESC key or click the button below to close</p>
-          <div className="modal-action"> */}
-            {/* <ProductCard data={ChartData} index={reference}/> */}
-            {/* <form method="dialog"> */}
-              {/* if there is a button in form, it will close the modal */}
-              {/* <button className="btn">Close</button>
-            </form>
-          </div>
-        </div>
-      </dialog> */}
-      <ProductCard data={ChartData} index={reference} visible={visible} func={closeModal}/>
+      <ProductCard data={ChartData} index={index}/>
       <TitleCard title="Latest Charts" topMargin="mt-2">
         <div className="overflow-x-auto w-full">
           <table className="table w-full">
@@ -110,8 +86,8 @@ function Leads() {
             </thead>
             <tbody>
               {ChartData.map((data, index) => (
-                <tr key={index} onClick={() => handleClick(index)}>
-                  <td></td>
+                <tr key={index} onClick={() => setIndex(index)}>
+                  <td onClick={() => setIndex(index)}>{data.pos}</td>
                   <td>
                     {data.lw === "NEW" ? (
                       <p>{"NEW"}</p>
@@ -130,7 +106,7 @@ function Leads() {
                   </td>
                   <td>
                     <div className="flex items-center space-x-3">
-                      <div >
+                      <div onClick={() => setIndex(index)}>
                         {/* //<Link to="/app/transactions"> */}
                           <div className="font-bold">{data.title}</div>
                         {/* //</Link> */}
