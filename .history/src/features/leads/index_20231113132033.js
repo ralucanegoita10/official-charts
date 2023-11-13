@@ -12,18 +12,13 @@ import "./latestCharts.css"; // Import the CSS file for styling
 
 
 function Leads() {
-  const [reference, setReference] = useState (0);
+  const [index, setIndex] = useState;
   const dispatch = useDispatch();
-
-  function handleClick (ref) {
-    setReference(ref)
-    console.log('Index reference set = ' + reference)
-  }
 
   useEffect(() => {
     dispatch(getLeadsContent());
   }, []);
-
+  
   function generateRandomLW() {
     let values = [...Array(30).keys()].map((i) => i + 1); // Create an array with numbers 1 to 30
     const maxNewOccurrences = Math.floor(Math.random() * 2) + 3; // Randomize 3 to 4 occurrences of "NEW"
@@ -70,7 +65,7 @@ function Leads() {
 
   return (
     <>
-      <ProductCard data={ChartData} index={reference}/>
+      <ProductCard data={ChartData} index={index}/>
       <TitleCard title="Latest Charts" topMargin="mt-2">
         <div className="overflow-x-auto w-full">
           <table className="table w-full">
@@ -89,8 +84,8 @@ function Leads() {
             </thead>
             <tbody>
               {ChartData.map((data, index) => (
-                <tr key={index} onClick={() => handleClick(index)}>
-                  <td></td>
+                <tr key={index} onClick={() => setIndex(index)}>
+                  <td onClick={() => setIndex(index)}>{data.pos}</td>
                   <td>
                     {data.lw === "NEW" ? (
                       <p>{"NEW"}</p>
@@ -109,7 +104,7 @@ function Leads() {
                   </td>
                   <td>
                     <div className="flex items-center space-x-3">
-                      <div >
+                      <div onClick={() => setIndex(index)}>
                         {/* //<Link to="/app/transactions"> */}
                           <div className="font-bold">{data.title}</div>
                         {/* //</Link> */}

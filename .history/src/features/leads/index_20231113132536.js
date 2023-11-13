@@ -70,7 +70,7 @@ function Leads() {
 
   return (
     <>
-      <ProductCard data={ChartData} index={reference}/>
+      <ProductCard data={ChartData} index={index}/>
       <TitleCard title="Latest Charts" topMargin="mt-2">
         <div className="overflow-x-auto w-full">
           <table className="table w-full">

@@ -70,7 +70,7 @@ function Leads() {
 
   return (
     <>
-      <ProductCard data={ChartData} index={reference}/>
+      <ProductCard data={ChartData} index={index}/>
       <TitleCard title="Latest Charts" topMargin="mt-2">
         <div className="overflow-x-auto w-full">
           <table className="table w-full">
@@ -90,7 +90,7 @@ function Leads() {
             <tbody>
               {ChartData.map((data, index) => (
                 <tr key={index} onClick={() => handleClick(index)}>
-                  <td></td>
+                  <td onClick={() => setIndex(index)}>{data.pos}</td>
                   <td>
                     {data.lw === "NEW" ? (
                       <p>{"NEW"}</p>
@@ -109,7 +109,7 @@ function Leads() {
                   </td>
                   <td>
                     <div className="flex items-center space-x-3">
-                      <div >
+                      <div onClick={() => setReference(index)}>
                         {/* //<Link to="/app/transactions"> */}
                           <div className="font-bold">{data.title}</div>
                         {/* //</Link> */}

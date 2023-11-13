@@ -39,11 +39,6 @@ const routes = [
     icon: <CurrencyDollarIcon className={iconClasses}/>, // icon component
     name: 'Product', // name that appear in Sidebar
   },
-  {
-    path: '/app/productcard', // url
-    icon: <CurrencyDollarIcon className={iconClasses}/>, // icon component
-    name: 'Product Card', // name that appear in Sidebar
-  },
   // {
   //   path: '/app/integration', // url
   //   icon: <BoltIcon className={iconClasses}/>, // icon component

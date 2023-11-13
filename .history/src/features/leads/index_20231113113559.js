@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TitleCard from "../../components/Cards/TitleCard";
 import ProductCard from "../user/components/ProductCard";
@@ -10,15 +10,8 @@ import { Link } from 'react-router-dom'
 
 import "./latestCharts.css"; // Import the CSS file for styling
 
-
 function Leads() {
-  const [reference, setReference] = useState (0);
   const dispatch = useDispatch();
-
-  function handleClick (ref) {
-    setReference(ref)
-    console.log('Index reference set = ' + reference)
-  }
 
   useEffect(() => {
     dispatch(getLeadsContent());
@@ -70,7 +63,7 @@ function Leads() {
 
   return (
     <>
-      <ProductCard data={ChartData} index={reference}/>
+      <ProductCard data={ChartData}/>
       <TitleCard title="Latest Charts" topMargin="mt-2">
         <div className="overflow-x-auto w-full">
           <table className="table w-full">
@@ -89,8 +82,8 @@ function Leads() {
             </thead>
             <tbody>
               {ChartData.map((data, index) => (
-                <tr key={index} onClick={() => handleClick(index)}>
-                  <td></td>
+                <tr key={index}>
+                  <td>{data.pos}</td>
                   <td>
                     {data.lw === "NEW" ? (
                       <p>{"NEW"}</p>
@@ -109,10 +102,10 @@ function Leads() {
                   </td>
                   <td>
                     <div className="flex items-center space-x-3">
-                      <div >
-                        {/* //<Link to="/app/transactions"> */}
+                      <div>
+                        <Link to="/app/transactions">
                           <div className="font-bold">{data.title}</div>
-                        {/* //</Link> */}
+                        </Link>
                       </div>
                     </div>
                   </td>
