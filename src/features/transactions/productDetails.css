@@ -15,6 +15,11 @@
 
 
 /* TitleCard.css */
+.graph{
+  /* max-width: 800px; */
+  display: inline-flex;
+  align-items: flex-start;
+}
 
 .title-card {
   display: grid;

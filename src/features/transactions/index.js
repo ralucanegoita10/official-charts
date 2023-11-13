@@ -236,8 +236,9 @@ function Transactions() {
           </div>
         </TitleCard>
       </div>
-      <div>
+      <div className="graph">
         <TitleCard title={"Sales over time"}>
+          <Line data={data} options={options} />
           <Line data={data} options={options} />
         </TitleCard>
       </div>
