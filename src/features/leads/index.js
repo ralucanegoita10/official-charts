@@ -5,8 +5,7 @@ import ProductCard from "../user/components/ProductCard";
 import { getLeadsContent } from "./leadSlice";
 import ChartData from "./chartData";
 import { Sparklines, SparklinesLine } from "react-sparklines";
-import { Link } from 'react-router-dom'
-
+import { Link } from "react-router-dom";
 
 import "./latestCharts.css"; // Import the CSS file for styling
 
@@ -106,6 +105,7 @@ function Leads() {
                 <th>Download</th>
                 <th>Streams</th>
                 <th>Sparkline</th>
+                <th>Details</th>
               </tr>
             </thead>
             <tbody>
@@ -130,10 +130,8 @@ function Leads() {
                   </td>
                   <td>
                     <div className="flex items-center space-x-3">
-                      <div >
-                        {/* //<Link to="/app/transactions"> */}
-                          <div className="font-bold">{data.title}</div>
-                        {/* //</Link> */}
+                      <div>
+                         <div className="font-bold">{data.title}</div>
                       </div>
                     </div>
                   </td>
@@ -180,6 +178,11 @@ function Leads() {
                       </Sparklines>
                     </div>
                   </td>
+                  <td>
+                    <Link to="/app/transactions">
+                      <div className="font-bold">{"Graphs"}</div>
+                    </Link>
+                  </td> 
                 </tr>
               ))}
             </tbody>
