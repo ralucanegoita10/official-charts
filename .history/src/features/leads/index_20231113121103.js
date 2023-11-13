@@ -1,31 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TitleCard from "../../components/Cards/TitleCard";
 import ProductCard from "../user/components/ProductCard";
 import { getLeadsContent } from "./leadSlice";
 import ChartData from "./chartData";
 import { Sparklines, SparklinesLine } from "react-sparklines";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom'
+
 
 import "./latestCharts.css"; // Import the CSS file for styling
 
-
 function Leads() {
-  const [reference, setReference] = useState (0);
-  const [visible, setVisible] = useState(false);
   const dispatch = useDispatch();
-
-  function closeModal () {
-    console.log('clicked')
-    setVisible(!visible)
-  }
-  function handleClick (ref) {
-    setReference(ref)
-    setVisible(!visible)
-    console.log('Index reference set = ' + reference)
-    console.log('Visibility toggled!')
-    //document.getElementById('my_modal_1').showModal()
-  }
 
   useEffect(() => {
     dispatch(getLeadsContent());
@@ -77,20 +63,7 @@ function Leads() {
 
   return (
     <>
-      {/* <dialog id="my_modal_1" className="modal">
-        <div className="modal-box">
-          <h3 className="font-bold text-lg">Hello!</h3>
-          <p className="py-4">Press ESC key or click the button below to close</p>
-          <div className="modal-action"> */}
-            {/* <ProductCard data={ChartData} index={reference}/> */}
-            {/* <form method="dialog"> */}
-              {/* if there is a button in form, it will close the modal */}
-              {/* <button className="btn">Close</button>
-            </form>
-          </div>
-        </div>
-      </dialog> */}
-      <ProductCard data={ChartData} index={reference} visible={visible} func={closeModal}/>
+      <ProductCard info={ChartData} index={Math.floor(Math.random()*10)}/>
       <TitleCard title="Latest Charts" topMargin="mt-2">
         <div className="overflow-x-auto w-full">
           <table className="table w-full">
@@ -105,13 +78,12 @@ function Leads() {
                 <th>Download</th>
                 <th>Streams</th>
                 <th>Sparkline</th>
-                <th>Details</th>
               </tr>
             </thead>
             <tbody>
               {ChartData.map((data, index) => (
-                <tr key={index} onClick={() => handleClick(index)}>
-                  <td></td>
+                <tr key={index}>
+                  <td>{data.pos}</td>
                   <td>
                     {data.lw === "NEW" ? (
                       <p>{"NEW"}</p>
@@ -131,7 +103,9 @@ function Leads() {
                   <td>
                     <div className="flex items-center space-x-3">
                       <div>
-                         <div className="font-bold">{data.title}</div>
+                        <Link to="/app/transactions">
+                          <div className="font-bold">{data.title}</div>
+                        </Link>
                       </div>
                     </div>
                   </td>
@@ -178,11 +152,6 @@ function Leads() {
                       </Sparklines>
                     </div>
                   </td>
-                  <td>
-                    <Link to="/app/transactions">
-                      <div className="font-bold">{"Graphs"}</div>
-                    </Link>
-                  </td> 
                 </tr>
               ))}
             </tbody>

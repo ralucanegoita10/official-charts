@@ -5,7 +5,8 @@ import ProductCard from "../user/components/ProductCard";
 import { getLeadsContent } from "./leadSlice";
 import ChartData from "./chartData";
 import { Sparklines, SparklinesLine } from "react-sparklines";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom'
+
 
 import "./latestCharts.css"; // Import the CSS file for styling
 
@@ -15,10 +16,6 @@ function Leads() {
   const [visible, setVisible] = useState(false);
   const dispatch = useDispatch();
 
-  function closeModal () {
-    console.log('clicked')
-    setVisible(!visible)
-  }
   function handleClick (ref) {
     setReference(ref)
     setVisible(!visible)
@@ -90,7 +87,7 @@ function Leads() {
           </div>
         </div>
       </dialog> */}
-      <ProductCard data={ChartData} index={reference} visible={visible} func={closeModal}/>
+      <ProductCard data={ChartData} index={reference} visible={visible} onClick={() => console.log('clicked')}/>
       <TitleCard title="Latest Charts" topMargin="mt-2">
         <div className="overflow-x-auto w-full">
           <table className="table w-full">
@@ -105,7 +102,6 @@ function Leads() {
                 <th>Download</th>
                 <th>Streams</th>
                 <th>Sparkline</th>
-                <th>Details</th>
               </tr>
             </thead>
             <tbody>
@@ -130,8 +126,10 @@ function Leads() {
                   </td>
                   <td>
                     <div className="flex items-center space-x-3">
-                      <div>
-                         <div className="font-bold">{data.title}</div>
+                      <div >
+                        {/* //<Link to="/app/transactions"> */}
+                          <div className="font-bold">{data.title}</div>
+                        {/* //</Link> */}
                       </div>
                     </div>
                   </td>
@@ -178,11 +176,6 @@ function Leads() {
                       </Sparklines>
                     </div>
                   </td>
-                  <td>
-                    <Link to="/app/transactions">
-                      <div className="font-bold">{"Graphs"}</div>
-                    </Link>
-                  </td> 
                 </tr>
               ))}
             </tbody>
