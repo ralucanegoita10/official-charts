@@ -88,7 +88,7 @@ function Leads() {
         <dialog id="my_modal_1" className={classList}>
           <div className="modal-box">
             <ProductCard data={ChartData} index={reference} clickFunc={()=> handleClick(0)}/>
-            <p className="py-4">Click the button below to close</p> 
+            <p className="py-4">Press ESC key or click the button below to close</p> 
             <div className="modal-action">
               <form method="dialog">
                 {/* if there is a button in form, it will close the modal */}

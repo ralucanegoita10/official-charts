@@ -37,9 +37,6 @@ function InternalPage(){
     return(
         <div>
             <div>
-                <button className='btn' onClick={()=>{
-                document.getElementById('my_modal_1').showModal()
-                handleToggle()}}>Open Modal</button>
                 <dialog id="my_modal_1" className={classList}>
                     <div className="modal-box">
                         <ProductCard data={ChartData} visible={true} index={Math.floor(Math.random()*10)} func={()=> console.log('nope')}/>

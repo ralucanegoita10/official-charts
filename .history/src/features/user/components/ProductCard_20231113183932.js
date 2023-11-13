@@ -11,7 +11,7 @@ function ProductCard ({data, index, clickFunc}) {
                 <TitleCard title={data[index].title} >
                     <div className="flex items-center space-x-3"  >
                         <div className="avatar">
-                            <div className=" w-60 h-60 ">
+                            <div className="mask mask-squircle w-40 h-40 zoom">
                                 <img src={data[index].albumPhoto} alt="Album Art" />
                             </div>
                         </div>
