@@ -8,8 +8,8 @@ function ProductCard ({data, index, visible, func}) {
    
         return(
             visible && 
-            <div onClick={() => func()}>
-                <TitleCard title={data[index].title} >
+            <>  
+                <TitleCard title={data[index].title} onClick={() => func()}>
                     <div className="flex items-center space-x-3"  >
                         <div className="avatar">
                             <div className="mask mask-squircle w-12 h-12 zoom">
@@ -27,7 +27,7 @@ function ProductCard ({data, index, visible, func}) {
                     <BarChart  />
                     <LineChart title={data[index].title}/>
                 </TitleCard>
-            </div>
+            </>
         )
     } else {
         return  (

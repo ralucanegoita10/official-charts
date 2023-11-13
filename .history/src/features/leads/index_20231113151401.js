@@ -16,10 +16,6 @@ function Leads() {
   const [visible, setVisible] = useState(false);
   const dispatch = useDispatch();
 
-  function closeModal () {
-    console.log('clicked')
-    setVisible(!visible)
-  }
   function handleClick (ref) {
     setReference(ref)
     setVisible(!visible)
@@ -91,7 +87,7 @@ function Leads() {
           </div>
         </div>
       </dialog> */}
-      <ProductCard data={ChartData} index={reference} visible={visible} func={closeModal}/>
+      <ProductCard data={ChartData} index={reference} visible={visible} closeCard={()=> handleClick(0)}/>
       <TitleCard title="Latest Charts" topMargin="mt-2">
         <div className="overflow-x-auto w-full">
           <table className="table w-full">

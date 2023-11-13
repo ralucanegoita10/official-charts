@@ -91,7 +91,7 @@ function Leads() {
           </div>
         </div>
       </dialog> */}
-      <ProductCard data={ChartData} index={reference} visible={visible} func={closeModal}/>
+      <ProductCard data={ChartData} index={reference} visible={visible} onClick={closeModal}/>
       <TitleCard title="Latest Charts" topMargin="mt-2">
         <div className="overflow-x-auto w-full">
           <table className="table w-full">

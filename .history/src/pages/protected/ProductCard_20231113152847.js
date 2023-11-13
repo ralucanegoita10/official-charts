@@ -16,11 +16,10 @@ function InternalPage(){
         <div>
             <div>
             <button className="btn" onClick={()=>document.getElementById('my_modal_1').showModal()}>open modal</button>
-<dialog id="my_modal_1" className="modal modal-top">
+<dialog id="my_modal_1" className="modal">
   <div className="modal-box">
     <h3 className="font-bold text-lg">Hello!</h3>
-            <ProductCard data={ChartData} visible={true} index={Math.floor(Math.random()*10)} func={()=> console.log('nope')}/>
-    <p className="py-4">Press ESC key or click the button below to close</p> 
+    <p className="py-4">Press ESC key or click the button below to close</p>
     <div className="modal-action">
       <form method="dialog">
         {/* if there is a button in form, it will close the modal */}
@@ -30,6 +29,7 @@ function InternalPage(){
   </div>
 </dialog>
             </div>
+            {/* <ProductCard data={ChartData} visible={true} index={Math.floor(Math.random()*10)}/> */}
         </div>
     )
 }
