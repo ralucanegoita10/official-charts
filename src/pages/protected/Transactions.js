@@ -14,6 +14,6 @@ function InternalPage(){
     return(
         <Transactions />
     )
-}
+};
 
 export default InternalPage

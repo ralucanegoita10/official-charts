@@ -1,4 +1,3 @@
-import moment from "moment";
 import React from "react";
 
 import TitleCard from "../../components/Cards/TitleCard";
@@ -6,6 +5,55 @@ import SalesData from "./salesTabledata";
 import ProductData from "./productDetails";
 import SalesHistoryTabledata from "./salesHistory";
 import "./productDetails.css";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Filler,
+  Legend,
+} from "chart.js";
+import { Line } from "react-chartjs-2";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Filler,
+  Legend
+);
+
+const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: "top",
+    },
+  },
+};
+
+const labels = ["January", "February", "March", "April", "May", "June", "July"];
+
+const data = {
+  labels,
+  datasets: [
+    {
+      fill: false,
+      label: "Sales over time",
+      data: labels.map(() => {
+        return Math.random() * 100;
+      }),
+      borderColor: "rgb(53, 162, 235)",
+      backgroundColor: "rgba(53, 162, 235, 0.5)",
+    },
+  ],
+};
 
 function Transactions() {
   const generateLoadingBarStyle = (value) => {
@@ -19,56 +67,71 @@ function Transactions() {
     };
   };
 
-  const styles = {
-    key: {
-      color: "black",
-      fontWeight: "bold",
-      backgroundColor: "rgb(242, 242, 242)",
-    },
-    value: {
-      color: "black",
-      backgroundColor: "rgb(242, 242, 242)",
-    },
-    table: {
-      width: "400px",
-    },
-  };
-
   return (
     <>
-      <div
-        style={{
-          display: "flex",
-          gap: "2rem",
-          maxWidth: "100vw",
-          overflowX: "auto",
-        }}
-      >
-        <TitleCard
-          title="Product Details"
-          topMargin="mt-2"
-          style={{ flex: "0 0 30%" }}
-        >
-          <div style={styles.table} className="w-1/2">
-            <table className="table w-2/3">
-              <tbody>
-                {Object.entries(ProductData[0]).map(([key, value], index) => (
-                  <tr key={index}>
-                    <td style={styles.key}>{key}</td>
-                    <td style={styles.value}>{value}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+      <div>
+        <TitleCard title="Product Details" topMargin="mt-2">
+          <div className="song-title">{"Shape of You"}</div>
+          <div className="container">
+            <div className="table-product-details">
+              <div className="artist-name">
+                <img src="/artist.png" width="150px" alt="idk" border-radius="5px"/>
+                <b>{"Artist:"}</b> Ed Sheeran
+              </div>
+
+              <div className="album-name">
+                <img src="/album.png" width="150px" alt="idk" border-radius="5px"/>
+                <b>{"Album:"}</b> Divide
+              </div>
+
+              <div className="record-company">
+                <img src="/recordCompany.png" width="150px" alt="idk" border-radius="5px" />
+                <b>{"Record company:"}</b> Asylum Atlantic Records UK
+
+              </div>
+
+              <div className="genre">
+                <img src="/genre.png" width="150px" alt="idk" border-radius="5px"/>
+                <b>{"Genre:"}</b> Pop
+              </div>
+            </div>
+
+            <div className="selected-stats">
+              <h2>{"Selected stats"}</h2>
+              <ul>
+                <li>
+                  <b>{"Release Date:"}</b> March 15, 2017
+                </li>
+                <li>
+                  <b>{"Duration:"}</b> 3 minutes and 45 seconds
+                </li>
+                <li>
+                  <b>{"Chart Performance:"}</b> Peaked at #3 on the Billboard
+                  Hot 100
+                </li>
+                <li>
+                  <b>{"Music Video Views:"}</b> Over 100 million on YouTube
+                </li>
+                <li>
+                  <b>{"Country of Signing:"}</b> UK
+                </li>
+                <li>
+                  <b>{"Corp. Group:"}</b> WARNER MUSIC
+                </li>
+                <li>
+                  <b>{"BPI. Cert:"}</b> 10xPlatinum
+                </li>
+                <li>
+                  <b>{"Nationality:"}</b> UK
+                </li>
+              </ul>
+            </div>
           </div>
         </TitleCard>
-        <TitleCard
-          title="Sales History Details"
-          topMargin="mt-2"
-          style={{ flex: 1 }}
-        >
-          <div className="overflow-x-auto w-full">
-            <table className="table w-full">
+
+        <TitleCard title="Sales data by media" topMargin="mt-2">
+          <div className="table">
+            <table width="100%">
               <thead>
                 <tr>
                   <th rowSpan="2"></th>
@@ -174,7 +237,12 @@ function Transactions() {
         </TitleCard>
       </div>
       <div>
-        <TitleCard title="Sales" topMargin="mt-2" style={{ width: "60%" }}>
+        <TitleCard title={"Sales over time"}>
+          <Line data={data} options={options} />
+        </TitleCard>
+      </div>
+      <div>
+        <TitleCard title="Sales data" topMargin="mt-2" style={{ width: "60%" }}>
           <div className="overflow-x-auto w-full">
             <table className="table w-full">
               <thead>

@@ -12,21 +12,91 @@
   background-color: #0f27e9; /*#ef6ad4; /* Purple color for the loading bar */
   border-radius: 5px; /* Rounded corners */
 }
+
+
 /* TitleCard.css */
+
 .title-card {
-    width: 500px; /* Adjust the width as needed */
-    background-color: black;
-    padding: 10px;
-  }
-  
-  .title-card .key {
-    color: pink;
-    background-color: black;
-    font-weight: bold;
-  }
-  
-  .title-card .value {
-    background-color: black;
-    color: white;
-  }
- 
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+}
+
+.table {
+  width: 100%;
+}
+
+.img {
+  border-radius: 5px;
+}
+
+.table-product-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+  width: 50%;
+  box-sizing: border-box;}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.selected-stats {
+  background-color: #f3f3f3;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 50%;
+  box-sizing: border-box;
+  text-align: left;
+
+}
+
+.selected-stats ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.selected-stats li {
+  margin-bottom: 10px;
+}
+
+.selected-stats b {
+  font-weight: bold;
+}
+
+.selected-stats h2 {
+  font-size: larger;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.song-title {
+  font-size: x-large;
+  font-weight: 300;
+  padding-bottom: 20px;
+}
+
+.artist-name,
+.album-name,
+.record-company,
+.genre {
+  display: column;
+  align-items: center;
+}
+
+/* Remove unnecessary styles */
+.artist-name img,
+.album-name img,
+.record-company img,
+.genre img {
+  margin-right: 5px; /* Adjust as needed */
+}
+
