@@ -243,7 +243,7 @@ function Transactions() {
           {/* <Line data={data} options={options} /> */}
         {/* </TitleCard>
       </div> */} 
-    
+      <DoughnutChart/>
       <div>
         <TitleCard title="Sales data" topMargin="mt-2" style={{ width: "60%" }}>
           <div className="overflow-x-auto w-full">

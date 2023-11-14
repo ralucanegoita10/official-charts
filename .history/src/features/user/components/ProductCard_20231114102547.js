@@ -21,8 +21,8 @@ function ProductCard ({data, index, clickFunc}) {
                     <TitleCard title='Label'>
                         <div className="flex items-center space-x-3">
                             <div className="avatar">
-                                <div className=" w-60 h-40 flex ">
-                                    <img src={'https://brandongaille.com/wp-content/uploads/2014/02/Atlantic-Records-Company-Logo.png'} className='flex items-center' alt="Album Art" />
+                                <div className=" w-60 h-40 flex items-center space-x-3">
+                                    <img src={'https://brandongaille.com/wp-content/uploads/2014/02/Atlantic-Records-Company-Logo.png'} alt="Album Art" />
                                 </div>
                             </div>
                         </div>
