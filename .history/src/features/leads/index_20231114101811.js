@@ -13,7 +13,7 @@ import "./latestCharts.css"; // Import the CSS file for styling
 function Leads() {
   const [reference, setReference] = useState (0);
   //const [visible, setVisible] = useState(false);
-  const [classList, setClassList] = useState('modal modal-top w-6/12')
+  const [classList, setClassList] = useState('modal modal-top')
   const [isOpen, setIsOpen] = useState(false)
   const dispatch = useDispatch();
 
@@ -23,13 +23,13 @@ function Leads() {
     if (isOpen) {
       setIsOpen(false)
       //setStyleList({visibility:'hidden', opacity:0})
-      setClassList('modal modal-top w-6/12')
+      setClassList('modal modal-top')
       document.getElementById('my_modal_1').close()
   } else {
       setIsOpen(true)
       //setStyleList({visibility:'visible', opacity:'unset'})
       document.getElementById('my_modal_1').showModal()
-      setClassList('modal modal-top modal-open w-6/12')
+      setClassList('modal modal-top modal-open')
   }
 
   }
@@ -86,7 +86,7 @@ function Leads() {
     <>
       <div>
         <dialog id="my_modal_1" className={classList}>
-          <div className="modal-box">
+          <div className="modal-box w-3/12">
             <ProductCard data={ChartData} index={reference} clickFunc={()=> handleClick(0)}/>
             <p className="py-4">Click the button below to close</p> 
             <div className="modal-action">

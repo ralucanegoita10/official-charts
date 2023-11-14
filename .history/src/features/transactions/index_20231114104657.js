@@ -17,7 +17,6 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import DoughnutChart from "../dashboard/components/DoughnutChart";
 
 ChartJS.register(
   CategoryScale,
@@ -243,7 +242,6 @@ function Transactions() {
           {/* <Line data={data} options={options} /> */}
         {/* </TitleCard>
       </div> */} 
-    
       <div>
         <TitleCard title="Sales data" topMargin="mt-2" style={{ width: "60%" }}>
           <div className="overflow-x-auto w-full">

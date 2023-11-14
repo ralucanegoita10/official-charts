@@ -13,7 +13,7 @@ import "./latestCharts.css"; // Import the CSS file for styling
 function Leads() {
   const [reference, setReference] = useState (0);
   //const [visible, setVisible] = useState(false);
-  const [classList, setClassList] = useState('modal modal-top w-6/12')
+  const [classList, setClassList] = useState('modal modal-top')
   const [isOpen, setIsOpen] = useState(false)
   const dispatch = useDispatch();
 
@@ -23,13 +23,11 @@ function Leads() {
     if (isOpen) {
       setIsOpen(false)
       //setStyleList({visibility:'hidden', opacity:0})
-      setClassList('modal modal-top w-6/12')
-      document.getElementById('my_modal_1').close()
+      setClassList('modal modal-top')
   } else {
       setIsOpen(true)
       //setStyleList({visibility:'visible', opacity:'unset'})
-      document.getElementById('my_modal_1').showModal()
-      setClassList('modal modal-top modal-open w-6/12')
+      setClassList('modal modal-top modal-open')
   }
 
   }
@@ -84,20 +82,25 @@ function Leads() {
 
   return (
     <>
-      <div>
-        <dialog id="my_modal_1" className={classList}>
-          <div className="modal-box">
-            <ProductCard data={ChartData} index={reference} clickFunc={()=> handleClick(0)}/>
-            <p className="py-4">Click the button below to close</p> 
-            <div className="modal-action">
-              <form method="dialog">
-                {/* if there is a button in form, it will close the modal */}
-                <button id='cl-btn' className="btn" onClick={()=>handleClick(0)}>Close</button>
-              </form>
+           <div>
+            <button className="btn" onClick={()=>{
+                document.getElementById('my_modal_1').showModal()
+                handleClick()
+            }}>open modal</button>
+<dialog id="my_modal_1" className={classList}>
+  <div className="modal-box">
+    <h3 className="font-bold text-lg">Hello!</h3>
+            <ProductCard data={ChartData} index={reference} clickFunc={()=> console.log('nope')}/>
+    <p className="py-4">Press ESC key or click the button below to close</p> 
+    <div className="modal-action">
+      <form method="dialog">
+        {/* if there is a button in form, it will close the modal */}
+        <button id='cl-btn' className="btn" onClick={()=>handleClick(0)}>Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
             </div>
-          </div>
-        </dialog>
-      </div>
       <TitleCard title="Latest Charts" topMargin="mt-2">
         <div className="overflow-x-auto w-full">
           <table className="table w-full">
@@ -118,7 +121,7 @@ function Leads() {
             <tbody>
               {ChartData.map((data, index) => (
                 <tr key={index} onClick={() => handleClick(index)}>
-                  <td>{data.pos}</td>
+                  <td></td>
                   <td>
                     {data.lw === "NEW" ? (
                       <p>{"NEW"}</p>

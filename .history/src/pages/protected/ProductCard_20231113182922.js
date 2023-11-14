@@ -38,7 +38,6 @@ function InternalPage(){
         <div>
             <div>
                 <button className='btn' onClick={()=>{
-                document.getElementById('my_modal_1').showModal()
                 handleToggle()}}>Open Modal</button>
                 <dialog id="my_modal_1" className={classList}>
                     <div className="modal-box">
